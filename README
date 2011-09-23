@@ -9,4 +9,6 @@ naivebayes
 Description: Naive bayes classifier assumes a non-singular design matrix and discrete variables. 
 Usage: Reducer returns a-priori (such as - P(y = yk)) and conditional (such as - P(xi = a | y = yk)) probabilities. Predictions can be made by applying Baye's law and the naive assumptions made, P(Y) = P(Y = yk) * P(X = xi | Y = yk)....P(X = xn | Y = yk). Maximization over the the posterior probabilities reveals the most likely outcome. 
 
-kmeanse 
+kmeans
+Description:
+Usage:
