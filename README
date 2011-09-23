@@ -1,5 +1,5 @@
-maplearn is a library of classifier/regression tools to be used in with the Hadoop Streaming utility in Apache Hadoop:
-Note: All script take space-delimited files as input. 
+maplearn is a library of classifier/regression tools to be used with the Hadoop Streaming utility in Apache Hadoop.
+Note: All scripts take space-delimited files as input. 
 
 linear
 Description: Simple linear regression uses ordinary least squares estimates to fit parameters. 
