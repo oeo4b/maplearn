@@ -1,0 +1,29 @@
+##
+#
+# Mapper for a simple linear regression
+# Parameters estimated using ordinary least squares
+#
+##
+
+# Stdin
+all <- read.table(file("stdin"), header = F, sep = "\n")
+all <- strsplit(as.character(all[,1]), "\t")
+
+A <- 0
+b <- 0
+
+print(all)
+
+#
+# for(i in 1:length(all[,1])) {
+#  # Delimit by ' '
+#  X <- strsplit(as.character(all[i,]), " ")[[1]]
+
+  # Figure out X'X and X'y
+#  m <- as.numeric(X[2])
+#  tmpA <- as.numeric(X[3:(2+m*m)])
+#  A <- A + matrix(tmpA, m, m)
+#  b <- b + as.numeric(X[(2+m*m+1):(2+m*m+m)])
+# }
+
+# Stdout
