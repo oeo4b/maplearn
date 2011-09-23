@@ -9,21 +9,25 @@
 all <- read.table(file("stdin"), header = F, sep = "\n")
 all <- strsplit(as.character(all[,1]), "\t")
 
+# Count key/value pairs
+n <- length(all)
 A <- 0
 b <- 0
-
-print(all)
-
-#
-# for(i in 1:length(all[,1])) {
-#  # Delimit by ' '
-#  X <- strsplit(as.character(all[i,]), " ")[[1]]
-
-  # Figure out X'X and X'y
-#  m <- as.numeric(X[2])
-#  tmpA <- as.numeric(X[3:(2+m*m)])
-#  A <- A + matrix(tmpA, m, m)
-#  b <- b + as.numeric(X[(2+m*m+1):(2+m*m+m)])
-# }
+for(i in 1:length(all)) {
+  key <- as.character(all[[i]][1])
+  values <- strsplit(as.character(all[[i]][2]), " ")[[1]]
+  if(key=="A") {
+    A <- A + matrix(as.numeric(values), sqrt(length(values)), sqrt(length(values)))
+  }
+  if(key=="b") {
+    b <- b + as.numeric(values)
+  }
+}
 
 # Stdout
+cat("A\t")
+cat(A)
+cat("\n")
+cat("b\t")
+cat(b)
+cat("\n")
