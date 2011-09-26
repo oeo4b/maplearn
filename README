@@ -1,4 +1,4 @@
-maplearn is a library of classifier/regression tools to be used with the Hadoop Streaming utility in Apache Hadoop.
+"maplearn" is a library of classifier/regression tools to be used with the Hadoop Streaming utility in Apache Hadoop.
 Note: All scripts take space-delimited files as input. 
 
 linear
@@ -10,5 +10,5 @@ Description: Naive bayes classifier assumes a non-singular, linearly-independent
 Usage: Reducer returns a-priori (such as - P(y = yk)) and conditional (such as - P(xi = a | y = yk)) probabilities. Predictions can be made by applying Baye's law and the naive assumptions made, P(Y) = P(Y = yk) * P(X = xi | Y = yk)....P(X = xn | Y = yk). Maximization over the the posterior probabilities reveals the most likely outcome. 
 
 kmeans
-Description:
-Usage:
+Description: The k-means clustering algorithm iteratively minimizes the sum of squares for K cluster centroids. Parallelization is achieved by independently clustering each subgroup and using the partial sums to calculate the weighted averages.
+Usage: Reducer returns centroid features for each K cluster. K and initial starting centers must be specified in mapper.R.
