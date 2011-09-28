@@ -1,17 +1,24 @@
 #
+# Mapper
 # K-means clustering algorithm
-# Based on Hartigan, Wong (1979)
+# Optional optimal and quick transfer stages - optra.R, qtran.R
 #
 
-# Optimal-transfer and quick-transfer stage functions
-source("optra.R")
-source("qtran.R")
+# Stdin
+all <- read.table(file("stdin"), header = F, sep="\n")
+M <- length(all[,1])
+N <- length(strsplit(as.character(all[1,]), " ")[[1]])
+A <- matrix(0, M, N)
 
-# Global variables
-A <- matrix(rnorm(50*2), 50, 2) # Raw data
-M <- length(A[,1]) # Number of points
-N <- length(A[1,]) # Dimensions
-K <- 5 # Number of clusters 
+for(i in 1:M) {
+  r <- strsplit(as.character(all[i,]), " ")[[1]]
+  for(j in 1:N) {
+    A[i,j] <- as.numeric(r[j])
+  }
+}
+K <- 10 # Number of clusters 
+
+# Global transfer variables
 C <- matrix(0, K, N) # Cluster centres
 IC1 <- rep(0, M) # 1st closest neighbor
 IC2 <- rep(0, M) # 2nd closest neighbor
@@ -28,10 +35,12 @@ distance <- function(a, b) {
 }
 
 main<-function() {
-  # Initialize the cluster centers
-  for(k in 1:K) {
-    for(n in 1:N) {
-      C[k,n] <<- runif(1, min(A[,n]), max(A[,n]))
+  # Manually set the starting centers
+  TBL <<- read.table(file="centers")
+  
+  for(i in 1:K) {
+    for(j in 1:N) {
+      C[i,j] <<- as.numeric(TBL[i,j])
     }
   }
 
@@ -52,13 +61,14 @@ main<-function() {
     }
   }
 
-  # Step 3 
-  # Clusters already initiated into the live set
-
-  # Step 4
-  optra(rep(TRUE, K))
-  print(IC1)
+  # Stdout -- Averages and points per cluster
+  for(k in 1:K) {
+    cat(k, "\t", sum(IC1==k), "\t", sep="")
+    cat(C[k,])
+    cat("\n", sep="")
+  }
 }
 
 # Start the app
 main()
+
