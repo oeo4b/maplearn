@@ -11,4 +11,4 @@ Usage: Reducer returns a-priori (such as - P(y = yk)) and conditional (such as -
 
 kmeans
 Description: The k-means clustering algorithm iteratively minimizes the sum of squares for K cluster centroids. Parallelization is achieved by independently clustering each subgroup and using the partial sums to calculate the weighted averages.
-Usage: Reducer returns centroid features for each K cluster. K and initial starting centers must be specified in mapper.R.
+Usage: Reducer returns centroid features for each K cluster. Starting centers must be stored in the space-delimited 'R/kmeans/centers' file - the number of clusters are determined by the dimensions of the matrix. 
