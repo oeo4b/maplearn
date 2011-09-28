@@ -1,8 +1,9 @@
 #
-#
+# Optimal-transfer stage
 #
 
 optra<-function(LS) {
+  RLS <- rep(FALSE, length(LS))
   for(I in 1:M) {
     L1 <- IC1[I]
     if(L1%in%which(LS)) {
@@ -24,9 +25,12 @@ optra<-function(LS) {
         IC2[I] <<- L1
         IC1[I] <<- L2
 
+        RLS[L1] <- TRUE
+        RLS[L2] <- TRUE
+
         for(k in c(L1, L2)) {
           for(n in 1:N) {
-            C[k,n] <- mean(A[,n][IC1==k])
+            C[k,n] <<- mean(A[,n][IC1==k])
           }
         }
       }
@@ -50,14 +54,17 @@ optra<-function(LS) {
         IC2[I] <<- L1
         IC1[I] <<- L2
 
+        RLS[L1] <- TRUE
+        RLS[L2] <- TRUE
+
         for(k in c(L1, L2)) {
           for(n in 1:N) {
-            C[k,n] <- mean(A[,n][IC1==k])
+            C[k,n] <<- mean(A[,n][IC1==k])
           }
         }
       }
     }
   }
-
+  return(RLS)
 }
 
